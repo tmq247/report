@@ -27,24 +27,24 @@ api_id = 27062094
 api_hash = '2edbe92cfa9db035248bfc8957ba1b95'
 if args.help:
     print(f'''Help:
-  -an {Fore.LIGHTBLUE_EX}NUMBER{Fore.RESET}, --add-number {Fore.LIGHTBLUE_EX}NUMBER{Fore.RESET} ~> {Fore.YELLOW}thêm tài khoản vào tập lệnh{Fore.RESET}
+  -an {Fore.LIGHTBLUE_EX}SỐ ĐIỆN THOẠI{Fore.RESET}, --add-number {Fore.LIGHTBLUE_EX}SỐ ĐIỆN THOẠI{Fore.RESET} ~> {Fore.YELLOW}thêm tài khoản vào tập lệnh{Fore.RESET}
   example: python3 {argv[0]} -an {Fore.LIGHTBLUE_EX}+1512****{Fore.RESET}
   
-  -r {Fore.LIGHTBLUE_EX}COUNT{Fore.RESET}, --run {Fore.LIGHTBLUE_EX}COUNT{Fore.RESET} ~> {Fore.YELLOW}đặt số lượng báo cáo{Fore.RESET}
-  -t {Fore.LIGHTBLUE_EX}TARGET{Fore.RESET}, --target {Fore.LIGHTBLUE_EX}TARGET{Fore.RESET} ~> {Fore.YELLOW}đặt mục tiêu (không có @){Fore.RESET}
-  -m {Fore.LIGHTBLUE_EX}MODE{Fore.RESET}, --mode {Fore.LIGHTBLUE_EX}MODE{Fore.RESET} ~> {Fore.YELLOW}đặt loại báo cáo (thư rác, ...){Fore.RESET}
-  example: python3 {argv[0]} -r {Fore.LIGHTBLUE_EX}1000{Fore.RESET} -t {Fore.LIGHTBLUE_EX}mmdChannel{Fore.RESET} -m {Fore.LIGHTBLUE_EX}spam{Fore.RESET}
+  -r {Fore.LIGHTBLUE_EX}SỐ LƯỢNG{Fore.RESET}, --run {Fore.LIGHTBLUE_EX}SỐ LƯỢNG{Fore.RESET} ~> {Fore.YELLOW}đặt số lượng báo cáo{Fore.RESET}
+  -t {Fore.LIGHTBLUE_EX}MỤC TIÊU{Fore.RESET}, --target {Fore.LIGHTBLUE_EX}MỤC TIÊU{Fore.RESET} ~> {Fore.YELLOW}đặt mục tiêu (không có @){Fore.RESET}
+  -m {Fore.LIGHTBLUE_EX}CHẾ ĐỘ{Fore.RESET}, --mode {Fore.LIGHTBLUE_EX}CHẾ ĐỘ{Fore.RESET} ~> {Fore.YELLOW}đặt loại báo cáo (thư rác, ...){Fore.RESET}
+  ví dụ: python3 {argv[0]} -r {Fore.LIGHTBLUE_EX}1000{Fore.RESET} -t {Fore.LIGHTBLUE_EX}mmdChannel{Fore.RESET} -m {Fore.LIGHTBLUE_EX}spam{Fore.RESET}
   
-  -re, --reasons ~> {Fore.YELLOW}show list of reasons for reporting{Fore.RESET}
-  -h, --help ~> {Fore.YELLOW}show help{Fore.RESET}''')
+  -re, --reasons ~> {Fore.YELLOW}hiển thị danh sách lý do báo cáo{Fore.RESET}
+  -h, --help ~> {Fore.YELLOW}hiển thị trợ giúp{Fore.RESET}''')
 elif args.reasons:
-    print(f'''List of reasons:
-    {Fore.YELLOW}*{Fore.RESET} spam
-    {Fore.YELLOW}*{Fore.RESET} fake_account
-    {Fore.YELLOW}*{Fore.RESET} violence
-    {Fore.YELLOW}*{Fore.RESET} child_abuse
-    {Fore.YELLOW}*{Fore.RESET} pornography
-    {Fore.YELLOW}*{Fore.RESET} geoirrelevant''')
+    print(f'''Danh sách lý do:
+    {Fore.YELLOW}*{Fore.RESET} spam(thư rác)
+    {Fore.YELLOW}*{Fore.RESET} fake_account(tài khoản giả)
+    {Fore.YELLOW}*{Fore.RESET} violence(bạo lực)
+    {Fore.YELLOW}*{Fore.RESET} child_abuse(lạm dụng trẻ em)
+    {Fore.YELLOW}*{Fore.RESET} pornography(nội dung khiêu dâm)
+    {Fore.YELLOW}*{Fore.RESET} geoirrelevant(khác)''')
 elif args.add_number != None:
     number = args.add_number
     if sesis != []:
@@ -107,9 +107,9 @@ elif args.add_number == None and args.run != None and args.target != None and ar
                     elif args.mode == 'geoirrelevant':
                         result = await cli(functions.messages.ReportRequest(peer=target, id=repMess, reason=types.InputReportReasonGeoIrrelevant(), message="This channel sends offensive content"))                        # functions.account.ReportPeerRequest(peer=target, reason=types.InputReportReasonViolence()))
                     if result:
-                        print(f" [{Fore.GREEN}✅{Fore.RESET}] Reported :) Ac:{Fore.YELLOW}{selfName}{Fore.RESET} count:{Fore.LIGHTBLUE_EX}{r}{Fore.RESET}")
+                        print(f" [{Fore.GREEN}✅{Fore.RESET}] Đã báo cáo :) Ac:{Fore.YELLOW}{selfName}{Fore.RESET} Số lượng:{Fore.LIGHTBLUE_EX}{r}{Fore.RESET}")
                     else:
-                        print(f" [{Fore.RED}!{Fore.RESET}] Error :( Ac:{Fore.YELLOW}{selfName}{Fore.RESET}, count:{Fore.LIGHTBLUE_EX}{r}{Fore.RESET}")
+                        print(f" [{Fore.RED}!{Fore.RESET}] Lỗi :( Ac:{Fore.YELLOW}{selfName}{Fore.RESET}, số lượng:{Fore.LIGHTBLUE_EX}{r}{Fore.RESET}")
         async def main():
             runLis = []
             for num in range(1, len(sesis) + 1):
@@ -130,5 +130,5 @@ elif args.add_number == None and args.run == None and args.target == None and ar
     
 {Fore.YELLOW}-----------------------------------------------{Fore.RESET}
  một công cụ báo cáo các kênh telegram của @coihaycoc
- use --help to see help: python3 {argv[0]} --help
+ use --help để xem trợ giúp: python3 {argv[0]} --help
     """)
