@@ -39,12 +39,12 @@ if args.help:
   -h, --help ~> {Fore.YELLOW}hiển thị trợ giúp{Fore.RESET}''')
 elif args.reasons:
     print(f'''Danh sách lý do:
-    {Fore.YELLOW}*{Fore.RESET} spam(thư rác)
-    {Fore.YELLOW}*{Fore.RESET} fake_account(tài khoản giả)
-    {Fore.YELLOW}*{Fore.RESET} violence(bạo lực)
-    {Fore.YELLOW}*{Fore.RESET} child_abuse(lạm dụng trẻ em)
-    {Fore.YELLOW}*{Fore.RESET} pornography(nội dung khiêu dâm)
-    {Fore.YELLOW}*{Fore.RESET} geoirrelevant(khác)''')
+    {Fore.YELLOW}*{Fore.RESET} spam (thư rác)
+    {Fore.YELLOW}*{Fore.RESET} fake_account (tài khoản giả)
+    {Fore.YELLOW}*{Fore.RESET} violence (bạo lực)
+    {Fore.YELLOW}*{Fore.RESET} child_abuse (lạm dụng trẻ em)
+    {Fore.YELLOW}*{Fore.RESET} pornography (nội dung khiêu dâm)
+    {Fore.YELLOW}*{Fore.RESET} geoirrelevant (khác)''')
 elif args.add_number != None:
     number = args.add_number
     if sesis != []:
